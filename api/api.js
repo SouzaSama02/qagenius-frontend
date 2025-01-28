@@ -1,9 +1,11 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import promptData from "../src/assets/prompt.json" with { type: "json" };
 import express from "express";
 import cors from "cors";
 import "dotenv/config";
 
+const promptData = await fetch("../src/assets/prompt.json").then((res) =>
+  res.json()
+);
 const port = process.env.PORT || 3000;
 const app = express();
 
