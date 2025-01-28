@@ -1,9 +1,7 @@
 <script setup>
-import { GoogleGenerativeAI } from "@google/generative-ai";
 import { ref } from "vue";
-import promptData from "../assets/prompt.json";
+import axios from "axios";
 
-const key = import.meta.env.VITE_GOOGLE_GEN_AI_KEY;
 const emit = defineEmits(["sendOutput"]);
 
 const inputText = ref("");
@@ -11,20 +9,11 @@ const exibirresposta = ref("");
 
 async function prompt() {
   try {
-    const genAI = new GoogleGenerativeAI(key);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const response = await axios.post("http://localhost:3000/prompt", {
+      inputText: inputText.value,
+    });
 
-    const prompt = `
-      ${promptData.instruction}
-      ${Object.entries(promptData.details)
-        .map(([key, value]) => `${key}: ${value}`)
-        .join("\n")}
-      Informação adicional: ${inputText.value}
-      Formato esperado: ${promptData.format}
-    `;
-    const result = await model.generateContent(prompt);
-
-    exibirresposta.value = result.response.text() || "Sem Resposta";
+    exibirresposta.value = response.data.response || "Sem Resposta";
     emit("sendOutput", { response: exibirresposta.value, success: true });
   } catch (error) {
     console.log("Erro ao enviar resposta:", error);
