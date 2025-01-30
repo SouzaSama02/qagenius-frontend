@@ -9,7 +9,7 @@ const exibirresposta = ref("");
 
 async function prompt() {
   try {
-    const response = await axios.post("http://localhost:3000/prompt", {
+    const response = await axios.post("https://api-gemini-qcq9.onrender.com/", {
       inputText: inputText.value,
     });
 
