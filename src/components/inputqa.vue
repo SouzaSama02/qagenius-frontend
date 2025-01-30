@@ -9,9 +9,12 @@ const exibirresposta = ref("");
 
 async function prompt() {
   try {
-    const response = await axios.post("https://api-gemini-qcq9.onrender.com/", {
-      inputText: inputText.value,
-    });
+    const response = await axios.post(
+      "https://api-gemini-qcq9.onrender.com/prompt",
+      {
+        inputText: inputText.value,
+      }
+    );
 
     exibirresposta.value = response.data.response || "Sem Resposta";
     emit("sendOutput", { response: exibirresposta.value, success: true });
