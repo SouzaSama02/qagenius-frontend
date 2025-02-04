@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import axios from "axios";
 
+const URL_API = import.meta.env.VITE_URL_API;
 const emit = defineEmits(["sendOutput"]);
 
 const inputText = ref("");
@@ -9,12 +10,9 @@ const exibirresposta = ref("");
 
 async function prompt() {
   try {
-    const response = await axios.post(
-      "https://api-gemini-qcq9.onrender.com/prompt",
-      {
-        inputText: inputText.value,
-      }
-    );
+    const response = await axios.post(`${URL_API}/prompt`, {
+      inputText: inputText.value,
+    });
 
     exibirresposta.value = response.data.response || "Sem Resposta";
     emit("sendOutput", { response: exibirresposta.value, success: true });
