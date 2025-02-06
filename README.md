@@ -5,7 +5,7 @@ O **QA Genius** é uma ferramenta que transforma feedbacks simples de QA em resp
 ## 🔗 Backend
 
 Este repositório contém o **frontend** da aplicação. O backend, desenvolvido em **Flask**, pode ser encontrado aqui:  
-➡️ [Repositório do Backend (API Gemini)](https://github.com/SouzaSama02/api-gemini)
+➡️ [Repositório do Backend (API Gemini)](https://github.com/SouzaSama02/qagenius-backend)
 
 ## 🛠 Tecnologias
 
@@ -17,7 +17,7 @@ Este repositório contém o **frontend** da aplicação. O backend, desenvolvido
 ### 1️⃣ Clone este repositório
 
 ```bash
-git clone https://github.com/SouzaSama02/qagenius.git
+git clone https://github.com/SouzaSama02/qagenius-frontend.git
 cd qagenius
 ```
 
@@ -40,7 +40,7 @@ O frontend será iniciado em `http://localhost:5173`.
 Para que o **QA Genius** funcione corretamente, você precisa rodar o backend (`api-gemini`).
 
 Siga as instruções no repositório do backend:  
-➡️ [Instruções de Instalação do Backend](https://github.com/SouzaSama02/api-gemini)
+➡️ [Instruções de Instalação do Backend](https://github.com/SouzaSama02/qagenius-backend)
 
 ## 🎯 Funcionalidades
 
@@ -53,8 +53,8 @@ Siga as instruções no repositório do backend:
 
 Sinta-se à vontade para abrir **issues** ou enviar **pull requests** para melhorar o projeto!
 
-📌 **Frontend:** [QA Genius](https://github.com/SouzaSama02/qagenius)  
-📌 **Backend:** [API Gemini](https://github.com/SouzaSama02/api-gemini)
+📌 **Frontend:** [QA Genius](https://github.com/SouzaSama02/qagenius-frontend)  
+📌 **Backend:** [API Gemini](https://github.com/SouzaSama02/qagenius-backend)
 
 ## 📜 Licença
 
