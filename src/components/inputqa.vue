@@ -29,7 +29,7 @@ async function prompt() {
     <textarea
       id="inputText"
       class="textarea textarea-primary"
-      placeholder="Input"
+      placeholder="Ex: O botão de login não está funcionando corretamente, e a API retorna erro 400."
       v-model="inputText"
       rows="13"
       cols="80"
