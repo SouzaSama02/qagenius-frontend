@@ -14,11 +14,20 @@ defineProps({
     required: true,
     default: "",
   },
+  loading: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
 });
 </script>
 
 <template>
   <div class="w-auto flex flex-col items-center">
+    <span
+      v-if="(loading === true) & (dados === '')"
+      class="ml-8 loading loading-bars loading-lg"
+    ></span>
     <textarea
       id="textArea"
       v-if="dados"
@@ -36,7 +45,10 @@ defineProps({
       <img src="../assets/paper-svgrepo-com.svg" alt="icon-paper" />
       Copy
     </button>
-    <p v-else class="text-gray-500 italic text-center px-4">
+    <p
+      v-else-if="(dados === '') & (loading === false)"
+      class="text-gray-500 italic text-center px-4"
+    >
       Nenhuma resposta disponível.
     </p>
   </div>

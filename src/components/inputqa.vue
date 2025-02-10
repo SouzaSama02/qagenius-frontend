@@ -3,12 +3,15 @@ import { ref } from "vue";
 import axios from "axios";
 
 const URL_API = import.meta.env.VITE_URL_API;
-const emit = defineEmits(["sendOutput"]);
+const emit = defineEmits(["sendOutput, loading"]);
 
 const inputText = ref("");
 const exibirresposta = ref("");
+const loading = ref(false);
 
 async function prompt() {
+  loading.value = true;
+  emit("loading", loading.value);
   try {
     const response = await axios.post(`${URL_API}/prompt`, {
       inputText: inputText.value,
@@ -20,6 +23,9 @@ async function prompt() {
     console.log("Erro ao enviar resposta:", error);
     exibirresposta.value = "Erro ao processar a resposta. Tente novamente.";
     emit("sendOutput", exibirresposta.value);
+  } finally {
+    loading.value = false;
+    emit("loading", loading.value);
   }
 }
 </script>

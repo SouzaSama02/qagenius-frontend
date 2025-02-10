@@ -6,6 +6,11 @@ import outputqa from "./components/outputqa.vue";
 import introduce from "./components/introduce.vue";
 
 const outputMessage = ref("");
+const loading = ref(false);
+
+function setLoading(value) {
+  loading.value = value;
+}
 
 function setResponseData(value) {
   outputMessage.value = value;
@@ -21,11 +26,11 @@ function setResponseData(value) {
         class="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-8"
       >
         <div class="w-full md:w-auto">
-          <inputqa @sendOutput="setResponseData" />
+          <inputqa @sendOutput="setResponseData" @loading="setLoading" />
         </div>
 
         <div class="w-full md:w-auto">
-          <outputqa :dados="outputMessage" />
+          <outputqa :dados="outputMessage" :loading="loading" />
         </div>
       </div>
     </div>
