@@ -1,13 +1,23 @@
 <script setup>
 import { ref } from "vue";
+import { defineProps, defineEmits } from "vue";
+import { computed } from "vue";
 import axios from "axios";
 
 const URL_API = import.meta.env.VITE_URL_API;
-const emit = defineEmits(["sendOutput, loading"]);
+const emit = defineEmits(["sendOutput", "loading"]);
+const props = defineProps({
+  fileType: {
+    type: Boolean,
+    requerid: false,
+    default: false,
+  },
+});
 
 const inputText = ref("");
 const exibirresposta = ref("");
 const loading = ref(false);
+const typeFile = computed(() => (props.fileType ? "task" : "prompt"));
 
 async function prompt() {
   loading.value = true;
@@ -15,6 +25,7 @@ async function prompt() {
   try {
     const response = await axios.post(`${URL_API}/prompt`, {
       inputText: inputText.value,
+      typeFile: typeFile.value,
     });
 
     exibirresposta.value = response.data.response || "Sem Resposta";
