@@ -36,7 +36,6 @@ function setResponseData(value) {
         class="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-8"
       >
         <div class="w-full md:w-auto">
-          // props deve passar a variavel fileType para o componente inputqa
           <inputqa
             :fileType="onToggleFileType"
             @sendOutput="setResponseData"
